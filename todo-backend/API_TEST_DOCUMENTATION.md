@@ -14,11 +14,12 @@
 
 ## 01 Registration Invalid Data Request
 
-```http
+```
  POST {{baseUrl}}/auth/register
 ```
 
-Body: 
+**Body:** 
+
 ```
 { 
     "username": "ab",
@@ -27,17 +28,18 @@ Body:
 }
 ```
 
-Expected Outcome:
+**Expected Outcome:**
 
-![Test_1](./testImages/Test_1.png)
+![Test_1](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_1.png?raw=true)
 
 ## 02 Registration Success Request
 
-```http
+```
  POST {{baseUrl}}/auth/register
 ```
 
-Body: 
+**Body:**
+
 ```
 {
     "username": "testuser",
@@ -46,17 +48,18 @@ Body:
 }
 ```
 
-Expected Outcome:
+**Expected Outcome:**
 
-![Test_2](./testImages/Test_2.png)
+![Test_2](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_2.png?raw=true)
 
 ## 03 Registration Duplicate Email Request
 
-```http
+```
  POST {{baseUrl}}/auth/register
 ```
 
-Body: 
+**Body:** 
+
 ```
 {
     "username": "differentuser",
@@ -65,17 +68,18 @@ Body:
 }
 ```
 
-Expected Outcome:
+**Expected Outcome:**
 
-![Test_3](./testImages/Test_3.png)
+![Test_3](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_3.png?raw=true)
 
 ## 04 Login Invalid Credentials Request
 
-```http
+```
  POST {{baseUrl}}/auth/login
 ```
 
-Body: 
+**Body:**
+
 ```
 {
     "email": "test@example.com",
@@ -83,17 +87,18 @@ Body:
 }
 ```
 
-Expected Outcome:
+**Expected Outcome:**
 
-![Test_4](./testImages/Test_4.png)
+![Test_4](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_4.png?raw=true)
 
 ## 05 Login Success Request
 
-```http
+```
  POST {{baseUrl}}/auth/login
 ```
 
-Body: 
+**Body:**
+
 ```
 {
     "email": "test@example.com",
@@ -101,22 +106,24 @@ Body:
 }
 ```
 
-Expected Outcome:
+**Expected Outcome:**
 
-![Test_5](./testImages/Test_5.png)
+![Test_5](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_5.png?raw=true)
 
 ## 06 Create Task No Auth Request
 
-```http
+```
  POST {{baseUrl}}/tasks
 ```
 
-Headers
+**Headers:**
+
 ```
 Autharization: (leave empty)
 ```
 
-Body: 
+**Body:**
+
 ```
 {
     "message": "Complete API testing documentation",
@@ -125,22 +132,24 @@ Body:
 }
 ```
 
-Expected Outcome:
+**Expected Outcome:**
 
-![Test_6](./testImages/Test_6.png)
+![Test_6](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_6.png?raw=true)
 
 ## 07 Create Task Invalid Data Request
 
-```http
+```
  POST {{baseUrl}}/tasks
 ```
 
 **Headers:**
+
 | Key | Value |
 | :-- | :---- |
 | Autharization | Bearer {{authToken}}|
 
 **Body:**
+
 ```
 {
     "message": "",
@@ -148,26 +157,28 @@ Expected Outcome:
 }
 ```
 
-Expected Outcome:
+**Expected Outcome:**
 
-![Test_7_1](./testImages/Test_7_1.png)
+![Test_7_1](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_7_1.png?raw=true)
 
-![Test_7_2](./testImages/Test_7_2.png)
+![Test_7_2](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_7_2.png?raw=true)
 
 > IMPORTANT: Replace authToken value on every login/register request success. You will find the value in the response on success.
 
 ## 08 Create Task Success Request
 
-```http
+```
  POST {{baseUrl}}/tasks
 ```
 
 **Headers:**
+
 | Key | Value |
 | :-- | :---- |
 | Autharization | Bearer {{authToken}}|
 
 **Body:**
+
 ```
 {
     "message": "Complete API testing documentation",
@@ -176,48 +187,52 @@ Expected Outcome:
 }
 ```
 
-Expected Outcome:
+**Expected Outcome:**
 
-![Test_8_1](./testImages/Test_8_1.png)
+![Test_8_1](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_8_1.png?raw=true)
 
-![Test_8_2](./testImages/Test_8_2.png)
+![Test_8_2](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_8_2.png?raw=true)
 
 > IMPORTANT: Replace authToken value on every login/register request success. You will find the value in the response on success.
 
 ## 09 Get All Tasks Request
 
-```http
+```
  POST {{baseUrl}}/tasks
 ```
 
 **Headers:**
+
 | Key | Value |
 | :-- | :---- |
 | Autharization | Bearer {{authToken}}|
 
 **Body:**
+
 ```
 (leave empty)
 ```
 
-Expected Outcome:
+**Expected Outcome:**
 
-![Test_9](./testImages/Test_9.png)
+![Test_9](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_9.png?raw=true)
 
 > IMPORTANT: Replace authToken value on every login/register request success. You will find the value in the response on success.
 
 ## 10 Update Task Not Found Request
 
-```http
+```
  PUT {{baseUrl}}/tasks/507f1f77bcf86cd799439011
 ```
 
 **Headers:**
+
 | Key | Value |
 | :-- | :---- |
 | Autharization | Bearer {{authToken}}|
 
 **Body:**
+
 ```
 {
     "message": "This task doesn't exist",
@@ -226,24 +241,26 @@ Expected Outcome:
 }
 ```
 
-Expected Outcome:
+**Expected Outcome:**
 
-![Test_10](./testImages/Test_10.png)
+![Test_10](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_10.png?raw=true)
 
 > IMPORTANT: Replace authToken value on every login/register success request. You will find the value in the response on success.
 
 ## 11 Update Task Success Request
 
-```http
+```
  PUT {{baseUrl}}/tasks/{{taskId}}
 ```
 
 **Headers:**
+
 | Key | Value |
 | :-- | :---- |
 | Autharization | Bearer {{authToken}}|
 
 **Body:**
+
 ```
 {
     "message": "Updated: Complete API testing documentation",
@@ -252,11 +269,11 @@ Expected Outcome:
 }
 ```
 
-Expected Outcome:
+**Expected Outcome:**
 
-![Test_11_1](./testImages/Test_11_1.png)
+![Test_11_1](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_11_1.png?raw=true)
 
-![Test_11_2](./testImages/Test_11_2.png)
+![Test_11_2](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_11_2.png?raw=true)
 
 > IMPORTANT: 
 > - Replace authToken value on every login/register success request. You will find the value in the response on success.
@@ -264,23 +281,25 @@ Expected Outcome:
 
 ## 12 Toggle Task Completion Request
 
-```http
+```
  PATCH {{baseUrl}}/tasks/{{taskId}}/toggle
 ```
 
 **Headers:**
+
 | Key | Value |
 | :-- | :---- |
 | Autharization | Bearer {{authToken}}|
 
 **Body:**
+
 ```
 (leave empty)
 ```
 
-Expected Outcome:
+**Expected Outcome:**
 
-![Test_12](./testImages/Test_12.png)
+![Test_12](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_12.png?raw=true)
 
 > IMPORTANT: 
 > - Replace authToken value on every login/register success request. You will find the value in the response on success.
@@ -288,67 +307,73 @@ Expected Outcome:
 
 ## 13 Get Current User Request
 
-```http
+```
  GET {{baseUrl}}/auth/me
 ```
 
 **Headers:**
+
 | Key | Value |
 | :-- | :---- |
 | Autharization | Bearer {{authToken}}|
 
 **Body:**
+
 ```
 (leave empty)
 ```
 
-Expected Outcome:
+**Expected Outcome:**
 
-![Test_13](./testImages/Test_13.png)
+![Test_13](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_13.png?raw=true)
 
 > IMPORTANT: Replace authToken value on every login/register success request. You will find the value in the response on success.
 
 ## 14 Delete Task Not Found Request
 
-```http
+```
  DELETE {{baseUrl}}/tasks/507f1f77bcf86cd799439011
 ```
 
 **Headers:**
+
 | Key | Value |
 | :-- | :---- |
 | Autharization | Bearer {{authToken}}|
 
 **Body:**
+
 ```
 (leave empty)
 ```
 
-Expected Outcome:
+**Expected Outcome:**
 
-![Test_14](./testImages/Test_14.png)
+![Test_14](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_14.png?raw=true)
 
 > IMPORTANT: Replace authToken value on every login/register success request. You will find the value in the response on success.
 
 ## 15 Delete Task Success Request
 
-```http
+```
  DELETE {{baseUrl}}/tasks/{{taskId}}
 ```
 
 **Headers:**
+
 | Key | Value |
 | :-- | :---- |
 | Autharization | Bearer {{authToken}}|
 
 **Body:**
+
 ```
 (leave empty)
 ```
 
-Expected Outcome:
+**Expected Outcome:**
 
-![Test_15](./testImages/Test_15.png)
+![Test_15](https://github.com/DevangPatani08/Task_Management_App_Project/blob/main/todo-backend/testImages/Test_15.png?raw=true)
 
 > IMPORTANT: 
 > - Replace authToken value on every login/register success request. You will find the value in the response on success.
