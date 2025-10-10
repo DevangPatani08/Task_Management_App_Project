@@ -242,24 +242,26 @@ Use Postman or any API client to test the endpoints:
 
 ### 📄 Test Documentation
 
-This [Test Documentation]() contains the API tests methods, issues you mite face and expected test results with screenshots.
+This [Test Documentation](https://github.com/DevangPatani08/Task_Management_App_Project/blob/3446824d423ee0c2298f9457489f3840982239ea/todo-backend/API_TEST_DOCUMENTATION.md) contains the API tests methods, issues you mite face and expected test results with screenshots.
 
 ## 📁 Backend Structure
 
     backend/
-    ├── config/          # Database configuration
-    ├──├──
-    ├── controllers/     # Route controllers
-    ├──├──
-    ├── middleware/      # Custom middleware (auth, validation)
-    ├──├──
-    ├── models/          # MongoDB models
-    ├──├──
-    ├── routes/          # API routes
-    ├──├──
-    ├── utils/           # Utility functions
-    ├──├──
-    ├── server.js        # Application entry point
+    ├── controllers/                 # Route controllers
+    ├──├── authController.js         # User authentication functions
+    ├──├── taskController.js         # Task CRUD functions
+    ├── middleware/                  # Custom middleware (auth, validation)
+    ├──├── auth.js                   # Authentication middleware file
+    ├── models/                      # MongoDB models
+    ├──├── tasksModel.js             # Task Schema 
+    ├──├── usersModel.js             # User Schema 
+    ├── routes/                      # API routes
+    ├──├── auth.js                   # User auth routes
+    ├──├── tasks.js                  # Task routes
+    ├── testIamges/                  # Screenshots/Images of API test using postman
+    ├── API_TEST_DOCUMENTATION.md    # API Test documentation file
+    ├── .env                         # Environmental Variable (Not Uploaded to Git)
+    ├── server.js                    # Application entry point
     └── package.json
 
 ## 🚀 Deployment
