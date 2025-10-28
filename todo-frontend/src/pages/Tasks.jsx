@@ -47,34 +47,30 @@ const Tasks = () => {
     }
 
     return (
-        <div>
-            <main className='w-full max-h-screen'>
-                <div className="w-full h-full px-3 md:px-16 py-10 md:py-12 bg-transparent mt-20 md:mt-25 container mx-auto flex flex-col justify-start items-center">
-                    <div className="w-full h-max">
-                        <div className="w-full px-4 py-6 flex items-center justify-between">
-                            <div className='w-fit'>
-                                <h2 className='text-3xl font-bold text-gray-900'>My Tasks</h2>
-                                <p className='mt-2 text-base/6 text-gray-600'>Organize your tasks and boost your productivity</p>
-                            </div>
-
-                            <button type="button" onClick={() => setShowTaskForm(true)} className='flex items-center justify-center gap-1 text-base/6 font-bold text-white bg-indigo-500 px-6 py-3 rounded hover:bg-indigo-700 transition-all duration-300 ease-in-out'>
-                                <FaPlus size={24} />
-                                <span>Add New Task</span>
-                            </button>
-                        </div>
+        <main className='w-full min-h-screen h-full flex flex-col'>
+            <div className="w-full flex-1 px-3 md:px-16 py-10 md:py-12 mt-20 md:mt-25 container mx-auto flex flex-col justify-start items-center">
+                <div className="w-full px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div className='w-full md:w-fit text-center md:text-left'>
+                        <h2 className='text-3xl font-bold text-gray-900'>My Tasks</h2>
+                        <p className='mt-2 text-base/6 text-gray-600'>Organize your tasks and boost your productivity</p>
                     </div>
 
-                    {/* Display the task board */}
-                    <TaskBoard tasks={tasks} onDelete={deleteTask} onToggleComplete={toggleComplete} onEdit={handleEditClick} />
-                    
-                    {/* Display task form in create mode for creating new tasks */}
-                    {showTaskForm && <TaskForm isOpen={showTaskForm} onClose={handleCloseForm} mode='create' onSubmit={handleCreateTask} />}
-                    
-                    {/* Display task form in edit mode for editing a existing tasks */}
-                    {editingTask && <TaskForm isOpen={!!editingTask} onClose={handleCloseForm} mode='edit' task={editingTask} onSubmit={handleEditTask} />}
+                    <button type="button" onClick={() => setShowTaskForm(true)} className='flex items-center justify-center gap-1 text-base/6 font-bold text-white bg-indigo-500 px-6 py-3 rounded hover:bg-indigo-700 transition-all duration-300 ease-in-out'>
+                        <FaPlus size={24} />
+                        <span>Add New Task</span>
+                    </button>
                 </div>
-            </main>
-        </div>
+
+                {/* Display the task board */}
+                <TaskBoard tasks={tasks} onDelete={deleteTask} onToggleComplete={toggleComplete} onEdit={handleEditClick} />
+
+                {/* Display task form in create mode for creating new tasks */}
+                {showTaskForm && <TaskForm isOpen={showTaskForm} onClose={handleCloseForm} mode='create' onSubmit={handleCreateTask} />}
+
+                {/* Display task form in edit mode for editing a existing tasks */}
+                {editingTask && <TaskForm isOpen={!!editingTask} onClose={handleCloseForm} mode='edit' task={editingTask} onSubmit={handleEditTask} />}
+            </div>
+        </main>
     );
 };
 

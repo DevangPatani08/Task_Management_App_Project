@@ -15,7 +15,7 @@ const AppContent = () => {
 	const shouldDisplayNavbar = showNavbarRoutes.includes(location.pathname) || !['/login', '/register'].includes(location.pathname);
 
 	return (
-		<div className="min-h-screen bg-gray-50 overflow-x-hidden">
+		<div className="min-h-screen bg-gray-50 flex flex-col overflow-x-hidden">
 			{shouldDisplayNavbar && <Navbar />}
 			<Routes>
 				<Route path="/" element={<Home />} />

@@ -19,7 +19,7 @@ const TaskBoard = ({ tasks, onEdit, onDelete, onToggleComplete }) => {
     }, [tasks, currentTime]);
 
     return (
-        <div className='w-full h-full min-h-[60vh] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4'>
+        <div className='w-full h-full flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4'>
             {/* To Do Column */}
             <TaskColumn title='To Do' tasks={categorize.todo} type='todo' onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
             
