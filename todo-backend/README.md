@@ -240,7 +240,7 @@ Use Postman or any API client to test the endpoints:
 - Use the token in Authorization header for task endpoints.
 - Test all CRUD(Create, Read, Update and Delete) operations.
 
-### 📄 Test Documentation
+## 📄 Test Documentation
 
 This [Test Documentation](https://github.com/DevangPatani08/Task_Management_App_Project/blob/3446824d423ee0c2298f9457489f3840982239ea/todo-backend/API_TEST_DOCUMENTATION.md) contains the API tests methods, issues you mite face and expected test results with screenshots.
 
@@ -287,11 +287,6 @@ To run this project, you will need to add the following environment variables to
 | `PORT` | Server port | 5000 |
 | `MONGODB_URI` | MongoDB connection string | mongodb://localhost:27017/todoapp |
 | `JWT_SECRET` | Secret key for JWT tokens | Required |
-
-##
-<!-- ## 📄 License
-
-This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/) -->
 
 ## 🆘 Support
 
