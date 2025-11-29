@@ -1,6 +1,6 @@
 {
   "name": "backend",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A robust Node.js backend API for a Todo application with user authentication and task management.",
   "license": "ISC",
   "author": "Devang Patani",
