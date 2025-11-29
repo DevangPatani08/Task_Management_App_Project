@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@theme {
+  --font-brand: 'Plus Jakarta Sans', sans-serif;
+  --font-base: 'Inter', sans-serif;
+  --color-primary-50: oklch(96.2% 0.018 272.314);
+  --color-primary-100: oklch(93% 0.034 272.788);
+  --color-primary-200: oklch(87% 0.065 274.039);
+  --color-primary-300: oklch(78.5% 0.115 274.713);
+  --color-primary-400: oklch(67.3% 0.182 276.935);
+  --color-primary-500: oklch(58.5% 0.233 277.117);
+  --color-primary-600: oklch(51.1% 0.262 276.966);
+  --color-primary-700: oklch(45.7% 0.24 277.023);
+  --color-primary-800: oklch(39.8% 0.195 277.366);
+  --color-primary-900: oklch(35.9% 0.144 278.697);
+  --color-primary-950: oklch(25.7% 0.09 281.288);
+  
+  --color-neutral-50: oklch(98.4% 0.003 247.858);
+  --color-neutral-100: oklch(96.8% 0.007 247.896);
+  --color-neutral-200: oklch(92.9% 0.013 255.508);
+  --color-neutral-300: oklch(86.9% 0.022 252.894);
+  --color-neutral-400: oklch(70.4% 0.04 256.788);
+  --color-neutral-500: oklch(55.4% 0.046 257.417);
+  --color-neutral-600: oklch(44.6% 0.043 257.281);
+  --color-neutral-700: oklch(37.2% 0.044 257.287);
+  --color-neutral-800: oklch(27.9% 0.041 260.031);
+  --color-neutral-900: oklch(20.8% 0.042 265.755);
+  --color-neutral-950: oklch(12.9% 0.042 264.695);
+}
+
+html, body {
+  @apply bg-neutral-50 text-neutral-900 scroll-smooth m-0 font-base;
+}
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-primary-50);
+  margin: 0rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary-500);
+  border-radius: 2rem;
+}
+
+.loading-spinner {
+  border: 8px solid var(--color-neutral-300);
+  border-top: 8px solid var(--color-primary-500);
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.background-custom {
+  background-image: url('./assets/bg_image.png');
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.section {
+  @apply w-full h-max py-10 md:py-28 px-3 md:px-16 flex flex-col justify-center items-center;
+}
+
+.section-small {
+  @apply w-full h-max py-10 md:py-14 px-3 md:px-16 flex flex-col justify-center items-center;
+}
+
+.wrapper {
+  @apply container mx-auto flex flex-col justify-center items-center;
+}
+
+.heading-center {
+  @apply w-full lg:max-w-3xl flex flex-col justify-center items-center; 
+}
+
+.heading-left {
+  @apply w-full lg:max-w-3xl flex flex-col justify-start items-start; 
+}
+
+.grid-c3 {
+  @apply w-full grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12;
+}
+
+.grid-c4 {
+  @apply w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12;
+}
+
+.how-box {
+  @apply col-span-1 flex flex-col items-center justify-start p-6;
+}
+
+.why-box {
+  @apply col-span-1 flex flex-col items-center justify-start p-6 hover:bg-white hover:-translate-y-1 rounded-lg transition-all duration-200 ease-in-out cursor-pointer;
+}
+
+.about-box {
+  @apply col-span-1 flex flex-col items-center justify-center p-6 hover:bg-white hover:shadow-md hover:-translate-y-1 rounded-lg transition-colors duration-200 ease-in-out cursor-pointer;
+}
+
+.team-box {
+  @apply col-span-1 flex flex-col items-center justify-start gap-6;
+}
+.team-box > img {
+  @apply w-32 aspect-square rounded-full object-cover;
+}
+
+.team-box-container {
+  @apply w-full flex flex-col items-center justify-center gap-4;
+}
+
+.team-box-wrapper {
+  @apply w-full flex flex-col items-center justify-center gap-0;
+}
+
+.team-box-social {
+  @apply w-full flex items-center justify-center gap-2;
+}
+
+.contact-field {
+  @apply w-full bg-white border border-neutral-400 rounded-md focus:outline-none focus:border-primary-500 focus:text-neutral-700 px-12 py-4 capitalize;
+}
+
+.contact-box {
+  @apply w-full flex flex-col items-start justify-center lg:justify-start gap-6 p-6 hover:bg-white hover:shadow-md rounded-md flex-1 transition-all duration-200 ease-in-out cursor-pointer;
+}
+
+.input-field {
+  @apply w-full bg-white border border-neutral-400 rounded-md focus:outline-none focus:border-primary-500 focus:text-neutral-700 px-10 py-4;
+}
