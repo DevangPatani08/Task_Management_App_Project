@@ -20,6 +20,17 @@ export const useTasks = () => {
             draggable: false
         });
     };
+    
+    const successToast = (message) => {       
+        toast.success(message, {
+            position: 'bottom-center',
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false
+        });
+    };
 
     useEffect(() => {
         const fetch = async () => {
@@ -45,6 +56,8 @@ export const useTasks = () => {
             const newTask = await taskServices.createTask(data);
             setTasks(prev => [...prev, newTask]);
 
+            successToast('New task created successfully!...');
+
             return (newTask);
         
         } catch (err) {
@@ -58,6 +71,7 @@ export const useTasks = () => {
             const update = await taskServices.updateTask(id, data);
             setTasks(prev => prev.map(task => task._id === id ? update : task));
 
+            successToast('Task updated successfully!...');
             return (update);
         
         } catch (err) {
@@ -69,6 +83,7 @@ export const useTasks = () => {
         try {
             await taskServices.deleteTask(id);
             setTasks(prev => prev.filter(task => task._id !== id));
+            successToast('Task deleted successfully!...');
         
         } catch (err) {
             errorToast(err, 'Failed to delete task!...');
@@ -79,6 +94,7 @@ export const useTasks = () => {
         try {
             const toggledTask = await taskServices.toggleComplete(id);
             setTasks(prev => prev.map(task => task._id === id ? toggledTask : task));
+            successToast(`Task toggled successfully!...`);
 
             return (toggledTask);
 
