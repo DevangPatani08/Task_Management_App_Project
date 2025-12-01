@@ -1,10 +1,25 @@
 import { useEffect, useState } from "react";
 import { taskServices } from '../services/tasks';
+import { toast } from 'react-toastify';
+import 'react-toastify/ReactToastify.css';
 
 export const useTasks = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [tasks, setTasks] = useState([]);
+
+    const errorToast = (error, defaultMsg = 'An error occurred!...') => {
+        const message = error?.response?.data?.message || error?.message || error || defaultMsg;
+        
+        toast.error(typeof message === 'string' ? message : defaultMsg, {
+            position: 'bottom-center',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false
+        });
+    };
 
     useEffect(() => {
         const fetch = async () => {
@@ -14,12 +29,14 @@ export const useTasks = () => {
                 const data = await taskServices.getAllTasks();
                 setTasks(data);
             } catch (err) {
+                errorToast(err, 'Failed to load tasks!...');
                 setError(err);
             } finally {
                 setLoading(false);
             }
         };
 
+        toast.dismiss(); // clear all previous toast
         fetch();
     }, []);
 
@@ -31,7 +48,8 @@ export const useTasks = () => {
             return (newTask);
         
         } catch (err) {
-            throw err.response?.data?.message || err;
+            const errMsg = err.response?.data?.message || err;
+            errorToast(errMsg, 'Failed to create task!...');
         }
     };
 
@@ -43,7 +61,7 @@ export const useTasks = () => {
             return (update);
         
         } catch (err) {
-            throw err.response?.data?.message || err;
+            errorToast(err, 'Failed to update task!...');
         }
     };
 
@@ -53,7 +71,7 @@ export const useTasks = () => {
             setTasks(prev => prev.filter(task => task._id !== id));
         
         } catch (err) {
-            throw err.response?.data?.message || err;
+            errorToast(err, 'Failed to delete task!...');
         }
     };
 
@@ -65,9 +83,10 @@ export const useTasks = () => {
             return (toggledTask);
 
         } catch (err) {
-            throw err.response?.data?.message || err;
+            errorToast(err, 'Failed to toggle task complete status!...');
         }
     };
+
 
     return ({ tasks, loading, error, createTask, updateTask, deleteTask, toggleComplete });
 };
