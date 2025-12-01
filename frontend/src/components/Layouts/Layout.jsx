@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
                 {children}
             </main>
             {location.pathname !== '/tasks' && <Footer />}
-            <ToastContainer position='top-center' autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick pauseOnFocusLoss pauseOnHover theme='light' rtl={false} />
+            <ToastContainer position='top-center' hideProgressBar={false} newestOnTop={false} closeOnClick pauseOnFocusLoss pauseOnHover theme='light' rtl={false} />
         </div>
     );
 };
