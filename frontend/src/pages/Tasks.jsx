@@ -28,7 +28,7 @@ const Tasks = () => {
 
     if (loading) {
         return (
-            <div className='flex-1 flex justify-center items-center'>
+            <div className='flex-1 min-h-screen flex justify-center items-center'>
                 <div className='loading-spinner'></div>
             </div>
         );

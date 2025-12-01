@@ -53,6 +53,7 @@ html, body {
   width: 4rem;
   height: 4rem;
   animation: spin 2s linear infinite;
+  margin: auto;
 }
 
 @keyframes spin {

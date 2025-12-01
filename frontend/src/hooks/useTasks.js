@@ -12,7 +12,7 @@ export const useTasks = () => {
         const message = error?.response?.data?.message || error?.message || error || defaultMsg;
         
         toast.error(typeof message === 'string' ? message : defaultMsg, {
-            position: 'bottom-center',
+            position: 'top-center',
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -94,7 +94,6 @@ export const useTasks = () => {
         try {
             const toggledTask = await taskServices.toggleComplete(id);
             setTasks(prev => prev.map(task => task._id === id ? toggledTask : task));
-            successToast(`Task toggled successfully!...`);
 
             return (toggledTask);
 
