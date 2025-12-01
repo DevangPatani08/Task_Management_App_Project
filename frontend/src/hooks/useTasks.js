@@ -23,7 +23,7 @@ export const useTasks = () => {
     
     const successToast = (message) => {       
         toast.success(message, {
-            position: 'bottom-center',
+            position: 'top-center',
             autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
