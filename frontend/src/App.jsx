@@ -9,13 +9,10 @@ import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import Tasks from './pages/Tasks.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/ReactToastify.css';
 
 const App = () => {
   return (
     <AuthProvider>
-      <ToastContainer position='bottom-center' autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick pauseOnFocusLoss pauseOnHover theme='light' />
       <Router>
         <Routes>
           <Route path="/" element={<Layout><Home /></Layout>}></Route>

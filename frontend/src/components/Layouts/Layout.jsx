@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Footer from "../Navigation/Footer";
 import Header from "../Navigation/Header";
 import { useLocation } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/ReactToastify.css';
 
 const Layout = ({ children }) => {
     const [navH, setNavH] = useState(0);
@@ -19,6 +21,7 @@ const Layout = ({ children }) => {
                 {children}
             </main>
             {location.pathname !== '/tasks' && <Footer />}
+            <ToastContainer position='bottom-center' autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick pauseOnFocusLoss pauseOnHover theme='light' rtl={false} />
         </div>
     );
 };
