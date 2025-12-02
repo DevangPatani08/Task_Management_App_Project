@@ -12,23 +12,27 @@ export const useTasks = () => {
         const message = error?.response?.data?.message || error?.message || error || defaultMsg;
         
         toast.error(typeof message === 'string' ? message : defaultMsg, {
-            position: 'top-center',
+            position: "bottom-right",
             autoClose: 5000,
             hideProgressBar: false,
-            closeOnClick: true,
+            closeOnClick: false,
             pauseOnHover: true,
-            draggable: false
+            draggable: false,
+            progress: undefined,
+            theme: "colored",
         });
     };
     
     const successToast = (message) => {       
         toast.success(message, {
-            position: 'top-center',
+            position: "bottom-right",
             autoClose: 3000,
             hideProgressBar: false,
-            closeOnClick: true,
+            closeOnClick: false,
             pauseOnHover: true,
-            draggable: false
+            draggable: false,
+            progress: undefined,
+            theme: "light"
         });
     };
 
@@ -56,7 +60,7 @@ export const useTasks = () => {
             const newTask = await taskServices.createTask(data);
             setTasks(prev => [...prev, newTask]);
 
-            successToast('New task created successfully!...');
+            successToast(`New ${newTask.priority} task created successfully!...'`);
 
             return (newTask);
         
@@ -71,7 +75,8 @@ export const useTasks = () => {
             const update = await taskServices.updateTask(id, data);
             setTasks(prev => prev.map(task => task._id === id ? update : task));
 
-            successToast('Task updated successfully!...');
+            successToast(`${update.priority} task updated successfully!...'`);
+
             return (update);
         
         } catch (err) {
