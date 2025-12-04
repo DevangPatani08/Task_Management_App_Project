@@ -1,40 +1,11 @@
 import { useEffect, useState } from "react";
-import { taskServices } from '../services/tasks';
-import { toast } from 'react-toastify';
-import 'react-toastify/ReactToastify.css';
+import toast from 'react-hot-toast';
+import { taskServices } from '../services/tasks.js';
 
 export const useTasks = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [tasks, setTasks] = useState([]);
-
-    const errorToast = (error, defaultMsg = 'An error occurred!...') => {
-        const message = error?.response?.data?.message || error?.message || error || defaultMsg;
-        
-        toast.error(typeof message === 'string' ? message : defaultMsg, {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: false,
-            progress: undefined,
-            theme: "colored",
-        });
-    };
-    
-    const successToast = (message) => {       
-        toast.success(message, {
-            position: "bottom-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: false,
-            progress: undefined,
-            theme: "light"
-        });
-    };
 
     useEffect(() => {
         const fetch = async () => {
@@ -44,14 +15,14 @@ export const useTasks = () => {
                 const data = await taskServices.getAllTasks();
                 setTasks(data);
             } catch (err) {
-                errorToast(err, 'Failed to load tasks!...');
+                const errMsg = err?.message || 'Failed to load tasks!...';
                 setError(err);
+                toast.error(errMsg);
             } finally {
                 setLoading(false);
             }
         };
 
-        toast.dismiss(); // clear all previous toast
         fetch();
     }, []);
 
@@ -60,14 +31,14 @@ export const useTasks = () => {
             const newTask = await taskServices.createTask(data);
             setTasks(prev => [...prev, newTask]);
 
-            successToast(`New ${newTask.priority} task created successfully!...'`);
+            toast.success(`New ${newTask.priority} task created!...`);
 
             return (newTask);
-        
+
         } catch (err) {
-            const errMsg = err.response?.data?.message || err;
-            errorToast(errMsg, 'Failed to create task!...');
-        }
+            const errMsg = err.response?.data?.message || err || 'Failed to create a task!...';
+            toast.error(errMsg);
+        };
     };
 
     const updateTask = async (id, data) => {
@@ -75,38 +46,41 @@ export const useTasks = () => {
             const update = await taskServices.updateTask(id, data);
             setTasks(prev => prev.map(task => task._id === id ? update : task));
 
-            successToast(`${update.priority} task updated successfully!...'`);
+            toast.success(`${update.priority} task updated!...`);
 
             return (update);
-        
-        } catch (err) {
-            errorToast(err, 'Failed to update task!...');
-        }
-    };
 
+        } catch (err) {
+            const errMsg = err.response?.data?.message || err || 'Failed to update the task!...';
+            toast.error(errMsg);
+        };
+    };
+    
     const deleteTask = async (id) => {
         try {
             await taskServices.deleteTask(id);
             setTasks(prev => prev.filter(task => task._id !== id));
-            successToast('Task deleted successfully!...');
-        
-        } catch (err) {
-            errorToast(err, 'Failed to delete task!...');
-        }
-    };
 
+            toast.success('Task deleted successfully!...');
+
+        } catch (err) {
+            const errMsg = err.response?.data?.message || err || 'Failed to delete the task!...';
+            toast.error(errMsg);
+        };
+    };
+    
     const toggleComplete = async (id) => {
         try {
-            const toggledTask = await taskServices.toggleComplete(id);
-            setTasks(prev => prev.map(task => task._id === id ? toggledTask : task));
+            const toggle = await taskServices.toggleComplete(id);
+            setTasks(prev => prev.map(task => task._id === id ? toggle : task));
 
-            return (toggledTask);
+            return (toggle);
 
         } catch (err) {
-            errorToast(err, 'Failed to toggle task complete status!...');
-        }
+            const errMsg = err.response?.data?.message || err || 'Failed to toggle the task complete status!...';
+            toast.error(errMsg);
+        };
     };
-
 
     return ({ tasks, loading, error, createTask, updateTask, deleteTask, toggleComplete });
 };
