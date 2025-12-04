@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
                 {children}
             </main>
             {location.pathname !== '/tasks' && <Footer />}
-            <Toaster position='top-center' reverseOrder={false} />
+            <Toaster position='bottom-right' reverseOrder={false} />
         </div>
     );
 };
