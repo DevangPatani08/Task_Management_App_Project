@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Footer from "../Navigation/Footer";
 import Header from "../Navigation/Header";
 import { useLocation } from "react-router-dom";
-import Toaster from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 const Layout = ({ children }) => {
     const [navH, setNavH] = useState(0);
@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
                 {children}
             </main>
             {location.pathname !== '/tasks' && <Footer />}
-            <Toaster position="bottom-right" reverseOrder={false} />
+            <Toaster position='top-center' reverseOrder={false} />
         </div>
     );
 };
