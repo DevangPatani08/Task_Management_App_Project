@@ -8,9 +8,9 @@ const TaskColumn = ({ title, tasks, type, onEdit, onDelete, onToggleComplete }) 
 
   const columnColor = () => {
     switch (type) {
-      case 'todo': return 'bg-neutral-50 border-neutral-200'
+      case 'todo': return 'bg-primary-50 border-primary-200'
       case 'do-today': return 'bg-green-50 border-green-200'
-      case 'for-later': return 'bg-primary-50 border-primary-200'
+      case 'for-later': return 'bg-neutral-50 border-neutral-200'
       case 'overdue': return 'bg-red-50 border-red-200'
       default: return 'bg-neutral-50 border-neutral-200'
     }
@@ -18,9 +18,9 @@ const TaskColumn = ({ title, tasks, type, onEdit, onDelete, onToggleComplete }) 
 
   const headerColor = () => {
     switch (type) {
-      case 'todo': return 'bg-neutral-500 text-white'
+      case 'todo': return 'bg-primary-500 text-white'
       case 'do-today': return 'bg-green-500 text-white'
-      case 'for-later': return 'bg-primary-500 text-white'
+      case 'for-later': return 'bg-neutral-500 text-white'
       case 'overdue': return 'bg-red-500 text-white'
       default: return 'bg-neutral-500 text-white'
     }

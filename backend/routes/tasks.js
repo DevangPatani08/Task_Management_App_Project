@@ -7,7 +7,7 @@ const r = express.Router();
 
 const taskValidator = [
     auth,
-    body('message').notEmpty().withMessage('Task message is required!...'),
+    body('message').notEmpty().isLength({ min: 2, max: 500}).withMessage('Task message can be anything under 500 characters!...'),
     body('deadline').isISO8601().withMessage('Valid deadline is required!...'),
 ];
 

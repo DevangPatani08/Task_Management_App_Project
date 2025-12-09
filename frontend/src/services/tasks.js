@@ -10,7 +10,6 @@ export const taskServices = {
         return (res.data);
     },
     async updateTask(id, taskData) {
-        
         const res = await api.put(`/tasks/${id}`, taskData);
         return (res.data);
     },

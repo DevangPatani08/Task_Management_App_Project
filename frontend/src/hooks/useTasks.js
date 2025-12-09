@@ -74,6 +74,8 @@ export const useTasks = () => {
             const toggle = await taskServices.toggleComplete(id);
             setTasks(prev => prev.map(task => task._id === id ? toggle : task));
 
+            toast(`${toggle.completed ? 'Task Completed!...' : 'Task Pending!...'}`, { icon: '' });
+
             return (toggle);
 
         } catch (err) {

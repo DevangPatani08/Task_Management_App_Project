@@ -18,11 +18,11 @@ const TaskBoard = ({ tasks, onEdit, onDelete, onToggleComplete }) => {
     return (
         <div className='w-full flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4'>
             
-            <TaskColumn title='To Do' tasks={ctg.toDo} type='todo' onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
+            <TaskColumn title='Right Now' tasks={ctg.doToday} type='do-today' onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
             
-            <TaskColumn title='Do Today' tasks={ctg.doToday} type='do-today' onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
+            <TaskColumn title='On Convenience' tasks={ctg.toDo} type='todo' onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
             
-            <TaskColumn title='For Later' tasks={ctg.forLater} type='for-later' onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
+            <TaskColumn title='Complete Later' tasks={ctg.forLater} type='for-later' onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
             
             <TaskColumn title='OverDue' tasks={ctg.overDue} type='overdue' onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
         </div>

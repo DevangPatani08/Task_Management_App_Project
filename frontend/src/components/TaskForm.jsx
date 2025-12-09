@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Typography from './Typography';
 import Button from './Button';
 
@@ -45,7 +45,11 @@ const TaskForm = ({ isOpen, onClose, task, mode, onSubmit }) => {
     const validateForm = () => {
         const Err = {};
 
-        if (!formData.message.trim()) Err.message = 'Message is a required field!...';
+        if (!formData.message.trim()) {
+            Err.message = 'Message is a required field!...';
+        } else if (!formData.message.length > 500) {
+            Err.message = 'Message cannot exceed 500 characters!...';
+        }
 
         if (!formData.deadline) {
             Err.deadline = 'Deadline is a required field!...';
@@ -80,19 +84,21 @@ const TaskForm = ({ isOpen, onClose, task, mode, onSubmit }) => {
                     <form onSubmit={handleSubmit}>
                         <div className='mb-4'>
                             <label htmlFor='message' className='block text-sm font-medium text-neutral-700 mb-2'>Message<span className='text-red-500'>*</span></label>
-                            <textarea name="message" id="message" value={formData.message} onChange={handleChange} placeholder='Type message here...' rows={3} className={`w-full p-3 text-neutral-600 focus:text-neutral-700 bg-white border rounded-md focus:outline-none focus:border-transparent focus:ring-2 focus:ring-primary-500 ${errors.message ? 'border-red-500' : 'border-neutral-400'}`} required />
+                            <textarea name="message" id="message" value={formData.message} onChange={handleChange} placeholder='Type message here...' rows={3} className={`w-full p-3 text-neutral-600 focus:text-neutral-700 bg-white border rounded-md focus:outline-none focus:border-transparent focus:ring-2 focus:ring-primary-500 ${errors.message ? 'border-red-500 ' : 'border-neutral-400'}`} maxLength={500} required />
+                            <p className='w-full text-right mt-1 text-xs text-neutral-700'>{formData.message.length}/500</p>
                         </div>
                         <div className='mb-4'>
                             <label htmlFor='priority' className='block text-sm font-medium text-neutral-700 mb-2'>Priority<span className='text-red-500'>*</span></label>
                             <select name="priority" id="priority" value={formData.priority} onChange={handleChange} required className='w-full text-neutral-600 focus:text-neutral-700 border border-neutral-400 rounded-md p-3 text-base bg-white focus:outline-none focus:border-transparent focus:ring-2 focus:ring-primary-500'>
-                                <option value="todo">To Do</option>
-                                <option value="do-today">Do today</option>
-                                <option value="for-later">For Later</option>
+                                <option value="do-today">Right Now</option>
+                                <option value="todo">On Convenience</option>
+                                <option value="for-later">Complete Later</option>
                             </select>
                         </div>
                         <div className='mb-4'>
                             <label htmlFor='deadline' className='block text-sm font-medium text-neutral-700 mb-2'>Deadline<span className='text-red-500'>*</span></label>
                             <input type="datetime-local" name='deadline' id='deadline' value={formData.deadline} onChange={handleChange} className={`w-full p-3 text-neutral-600 focus:text-neutral-700 border bg-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent ${errors.deadline ? 'border-red-500' : 'border-neutral-400'}`} required />
+                            {errors.deadline && <p className='w-full mt-1 text-xs text-right text-red-500'>{errors.deadline}</p>}
                         </div>
                         <div className='flex items-center justify-end gap-6 pt-6 pb-2'>
                             <Button type='button' btnType='bgNone' handleClick={onClose}>Cancel</Button>
