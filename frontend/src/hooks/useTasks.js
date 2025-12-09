@@ -31,7 +31,7 @@ export const useTasks = () => {
             const newTask = await taskServices.createTask(data);
             setTasks(prev => [...prev, newTask]);
 
-            toast.success(`New ${newTask.priority} task created!...`);
+            toast.success(`New task created!...`);
 
             return (newTask);
 
@@ -46,7 +46,7 @@ export const useTasks = () => {
             const update = await taskServices.updateTask(id, data);
             setTasks(prev => prev.map(task => task._id === id ? update : task));
 
-            toast.success(`${update.priority} task updated!...`);
+            toast.success(`Task updated successfully!...`);
 
             return (update);
 
