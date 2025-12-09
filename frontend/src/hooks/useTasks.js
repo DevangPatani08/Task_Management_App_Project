@@ -78,7 +78,7 @@ export const useTasks = () => {
                 toast('Task Completed!...', { icon: '' });
             } else {
                 if (new Date(toggle.deadline) < new Date()) {
-                    toast('Task is overdue & pending!...', { icon: '' });
+                    toast('Task Is Overdue & Pending!...', { icon: '' });
                 } else {
                     toast('Task Pending!...', { icon: '' });
                 } 
