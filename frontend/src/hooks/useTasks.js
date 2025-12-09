@@ -74,7 +74,13 @@ export const useTasks = () => {
             const toggle = await taskServices.toggleComplete(id);
             setTasks(prev => prev.map(task => task._id === id ? toggle : task));
 
-            toast(`${toggle.completed ? 'Task Completed!...' : 'Task Pending!...'}`, { icon: '' });
+            if (toggle.completed) {
+                toast('Task Completed!...', { icon: '' });
+            } else if (toggle.priority === 'overdue') {
+                toast('Task is overdue & pending!...', { icon: '' });
+            } else {
+                toast('Task Pending!...', { icon: '' });
+            }
 
             return (toggle);
 
