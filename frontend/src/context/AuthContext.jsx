@@ -25,6 +25,7 @@ export const AuthProvider = ({ children }) => {
                 const token = localStorage.getItem('token');
                 if (token) {
                     const userData = await AuthService.getCurrentUser();
+                    localStorage.setItem('user', JSON.stringify({ username: userData.username, email: userData.email }));
                     setUser(userData);
                 }
 

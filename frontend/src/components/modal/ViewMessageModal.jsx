@@ -10,7 +10,7 @@ const ViewMessageModal = ({isOpen, title, message, onClose}) => {
                     <Typography variant='h5' weight='semibold'>{title}</Typography>
                     <X className='w-8 h-8 text-neutral-500' onClick={onClose} />
                 </div>
-                <div className='w-full max-h-40 overflow-y-scroll border border-neutral-400 rounded-md p-3 bg-neutral-50'>
+                <div className='w-full max-h-60 min-h-50 overflow-y-scroll border border-neutral-400 rounded-md p-3 bg-neutral-50'>
                     <Typography variant='p' weight='medium'>{message}</Typography>
                 </div>
             </div>

@@ -75,12 +75,12 @@ export const useTasks = () => {
             setTasks(prev => prev.map(task => task._id === id ? toggle : task));
 
             if (toggle.completed) {
-                toast('Task Completed!...', { icon: '' });
+                toast('Task Updated!...', { icon: '' });
             } else {
                 if (new Date(toggle.deadline) < new Date()) {
                     toast('Task Is Overdue & Pending!...', { icon: '' });
                 } else {
-                    toast('Task Pending!...', { icon: '' });
+                    toast('Task Updated!...', { icon: '' });
                 } 
             }
 

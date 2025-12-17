@@ -3,6 +3,7 @@
 @theme {
   --font-brand: 'Plus Jakarta Sans', sans-serif;
   --font-base: 'Inter', sans-serif;
+  --color-white: #ffffff;
   --color-primary-50: oklch(96.2% 0.018 272.314);
   --color-primary-100: oklch(93% 0.034 272.788);
   --color-primary-200: oklch(87% 0.065 274.039);
@@ -17,6 +18,7 @@
   
   --color-neutral-50: oklch(98.4% 0.003 247.858);
   --color-neutral-100: oklch(96.8% 0.007 247.896);
+  --color-neutral-150: oklch(94.8% 0.011 252.896);
   --color-neutral-200: oklch(92.9% 0.013 255.508);
   --color-neutral-300: oklch(86.9% 0.022 252.894);
   --color-neutral-400: oklch(70.4% 0.04 256.788);

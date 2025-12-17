@@ -14,13 +14,13 @@ const Layout = ({ children }) => {
     }, []);
     
     return (
-        <div className='w-full h-auto min-h-screen flex flex-col items-center justify-start gap-0'>
+        <div className='w-full h-auto min-h-screen flex flex-col items-center justify-start gap-0 relative'>
             <Header />
             <main className='w-full min-h-screen flex flex-col items-center justify-start gap-0' style={{ paddingTop: `${navH}px`}}>
                 {children}
             </main>
             {location.pathname !== '/tasks' && <Footer />}
-            <Toaster position='top-right' reverseOrder={false} />
+            <Toaster position="top-right" containerStyle={{ position: 'absolute', top: '100px', right: '50px', }} reverseOrder={false} />
         </div>
     );
 };

@@ -195,14 +195,15 @@ const Home = () => {
                     
                     {/* Accordion component */}
                     <Accordion faqs={data.faqs} />
-
-                    <div className='w-full flex flex-col justify-center items-center'>
+                </div>
+            </section>
+            {/* <section>
+                <div className='w-full flex flex-col justify-center items-center bg-primary-100 p-20'>
                         <Typography variant='h4' weight='semibold' className='w-full text-center'>Still have questions?</Typography>
                         <Typography variant='p' weight='regular' className='w-full text-center text-neutral-600 mt-4 mb-6'>We are only a message away! Lets talk it out.</Typography>
                         <Button type='button' btnType='primary' handleClick={() => { navigate('/contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Get in touch</Button>
                     </div>
-                </div>
-            </section>
+            </section> */}
         </div>
     );
 };
