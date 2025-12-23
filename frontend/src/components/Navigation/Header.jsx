@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import logo from '../../assets/Logo Light.svg';
 import { useAuth } from '../../context/AuthContext';
 import Button from '../Button';
@@ -42,22 +43,20 @@ const Header = () => {
 
         setActiveLink(id);
 
-        if (window.location.pathname === '/') {
-            const element = document.getElementById(id);
+        const element = document.getElementById(id);
 
-            if (element) {
-                const setOffset = element.offsetTop - document.getElementById('header').style.height;
-                window.scrollTo({ top: setOffset, behavior: 'smooth' });
-            } else {
-                navigate('/');
-                setTimeout(() => {
-                    const element = document.getElementById(id);
-                    if (element) {
-                        const setOffset = element.offsetTop - document.getElementById('header').style.height;
-                        window.scrollTo({ top: setOffset, behavior: 'smooth' });
-                    }
-                }, 100);
-            }
+        if (element) {
+            const setOffset = element.offsetTop - document.getElementById('header').style.height;
+            window.scrollTo({ top: setOffset, behavior: 'smooth' });
+        } else {
+            navigate('/');
+            setTimeout(() => {
+                const element = document.getElementById(id);
+                if (element) {
+                    const setOffset = element.offsetTop - document.getElementById('header').style.height;
+                    window.scrollTo({ top: setOffset, behavior: 'smooth' });
+                }
+            }, 100);
         }
     };
 
@@ -87,13 +86,13 @@ const Header = () => {
                 </div>
 
                 <div className='hidden xl:flex xl:gap-12'>
-                    <a href='/' onClick={() => { handlePageChange('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className={`transition-colors duration-200 ease-in-out ${isActive('home') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>Home</a>
-                    {user && <a href='/tasks' onClick={() => handlePageChange('/tasks')} className={`transition-colors duration-200 ease-in-out ${isActive('tasks') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>My Tasks</a>}
-                    <a href='/#how-it-works' onClick={(e) => handleSectionClick(e, 'how-it-works')} className={`transition-colors duration-200 ease-in-out ${isActive('how-it-works') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>Process</a>
-                    <a href='/#why-us' onClick={(e) => handleSectionClick(e, 'why-us')} className={`transition-colors duration-200 ease-in-out ${isActive('why-us') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>Why Us</a>
-                    <a href='/#about' onClick={(e) => handleSectionClick(e, 'about')} className={`transition-colors duration-200 ease-in-out ${isActive('about') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>About Us</a>
-                    <a href='/#faqs' onClick={(e) => handleSectionClick(e, 'faqs')} className={`transition-colors duration-200 ease-in-out ${isActive('faqs') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>FAQs</a>
-                    <a href='/contact' onClick={() => handlePageChange('/contact')} className={`transition-colors duration-200 ease-in-out ${isActive('contact') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>Get in touch</a>
+                    <HashLink to='/' onClick={() => { handlePageChange('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className={`transition-colors duration-200 ease-in-out ${isActive('home') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>Home</HashLink>
+                    {user && <HashLink to='/tasks' onClick={() => handlePageChange('/tasks')} className={`transition-colors duration-200 ease-in-out ${isActive('tasks') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>My Tasks</HashLink>}
+                    <HashLink to='/#how-it-works' onClick={(e) => handleSectionClick(e, 'how-it-works')} className={`transition-colors duration-200 ease-in-out ${isActive('how-it-works') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>Process</HashLink>
+                    <HashLink to='/#why-us' onClick={(e) => handleSectionClick(e, 'why-us')} className={`transition-colors duration-200 ease-in-out ${isActive('why-us') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>Why Us</HashLink>
+                    <HashLink to='/#about' onClick={(e) => handleSectionClick(e, 'about')} className={`transition-colors duration-200 ease-in-out ${isActive('about') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>About Us</HashLink>
+                    <HashLink to='/#faqs' onClick={(e) => handleSectionClick(e, 'faqs')} className={`transition-colors duration-200 ease-in-out ${isActive('faqs') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>FAQs</HashLink>
+                    <HashLink to='/contact' onClick={() => handlePageChange('/contact')} className={`transition-colors duration-200 ease-in-out ${isActive('contact') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>Get in touch</HashLink>
                 </div>
 
                 <div className='hidden xl:flex xl:flex-1 justify-end items-center gap-6'>

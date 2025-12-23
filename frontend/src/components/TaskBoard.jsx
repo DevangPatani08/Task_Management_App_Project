@@ -16,7 +16,7 @@ const TaskBoard = ({ tasks, onEdit, onDelete, onToggleComplete }) => {
     const ctg = useMemo(() => { return ctgTasks(tasks); }, [tasks, currentTime]);
 
     return (
-        <div className='w-full flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4'>
+        <div className='w-full flex-1 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 p-4'>
             
             <TaskColumn title='Right Now' tasks={ctg.doToday} type='do-today' onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
             

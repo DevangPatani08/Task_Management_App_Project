@@ -71,8 +71,10 @@ export const useTasks = () => {
     
     const toggleComplete = async (id) => {
         try {
+            setLoading(true);
             const toggle = await taskServices.toggleComplete(id);
             setTasks(prev => prev.map(task => task._id === id ? toggle : task));
+            setLoading(false);
 
             if (toggle.completed) {
                 toast('Task Updated!...', { icon: '' });
