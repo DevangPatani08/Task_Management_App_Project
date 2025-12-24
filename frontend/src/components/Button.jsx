@@ -20,11 +20,12 @@ const btnStyles = tv({
             bgNoneFW: 'w-full px-6 py-3 bg-transparent text-neutral-600 hover:text-primary-700',
             iconsBgNone: 'p-2.5 bg-transparent text-neutral-600 hover:text-primary-700',
             iconsPrimary: 'p-2.5 bg-primary-200 text-primary-800 hover:bg-primary-500 hover:text-white rounded-full',
-            iconsSecondary: 'p-2.5 border border-neutral-300 text-neutral-900 hover:bg-neutral-100 rounded-full',
+            iconsSecondary: 'p-2.5 border border-neutral-300 text-neutral-900 hover:bg-neutral-100 rounded-sm',
             iconsDanger: 'p-2.5 bg-red-200 text-red-600 hover:bg-red-600 hover:text-white rounded-full',
             iconsWarn: 'p-2.5 bg-yellow-200 text-amber-700 hover:bg-amber-400 hover:text-white rounded-full',
             iconsSuccess: 'p-2.5 bg-green-200 text-green-600 hover:bg-green-600 hover:text-white rounded-full',
-            iconsSquare: '-m-2.5 p-2.5 bg-transparent border-1 border-neutral-400 text-neutral-800 hover:bg-neutral-200 rounded-sm'
+            iconsSquare: '-m-2.5 p-2.5 bg-transparent border-1 border-neutral-400 text-neutral-800 hover:bg-neutral-200 rounded-sm',
+            iconsOnlySecondary: 'p-2.5 border border-neutral-300 text-neutral-900 hover:bg-neutral-100 rounded-full'
         }
     }
 });

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import logo from '../../assets/Logo Light.svg';
@@ -87,20 +87,23 @@ const Header = () => {
 
                 <div className='hidden xl:flex xl:gap-12'>
                     <HashLink to='/' onClick={() => { handlePageChange('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className={`transition-colors duration-200 ease-in-out ${isActive('home') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>Home</HashLink>
-                    {user && <HashLink to='/tasks' onClick={() => handlePageChange('/tasks')} className={`transition-colors duration-200 ease-in-out ${isActive('tasks') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>My Tasks</HashLink>}
                     <HashLink to='/#how-it-works' onClick={(e) => handleSectionClick(e, 'how-it-works')} className={`transition-colors duration-200 ease-in-out ${isActive('how-it-works') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>Process</HashLink>
                     <HashLink to='/#why-us' onClick={(e) => handleSectionClick(e, 'why-us')} className={`transition-colors duration-200 ease-in-out ${isActive('why-us') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>Why Us</HashLink>
                     <HashLink to='/#about' onClick={(e) => handleSectionClick(e, 'about')} className={`transition-colors duration-200 ease-in-out ${isActive('about') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>About Us</HashLink>
                     <HashLink to='/#faqs' onClick={(e) => handleSectionClick(e, 'faqs')} className={`transition-colors duration-200 ease-in-out ${isActive('faqs') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>FAQs</HashLink>
                     <HashLink to='/contact' onClick={() => handlePageChange('/contact')} className={`transition-colors duration-200 ease-in-out ${isActive('contact') ? 'text-primary-500 font-semibold' : 'text-neutral-600 hover:text-primary-500'}`}>Get in touch</HashLink>
+                    
                 </div>
 
                 <div className='hidden xl:flex xl:flex-1 justify-end items-center gap-6'>
                     {user ? (
-                        <Button type='button' btnType='bgNone' handleClick={handleLogout}>
-                            <span>Logout</span>
-                            <LogOut className='w-5 h-5'/>
-                        </Button>
+                        <div className='flex items-center gap-4'>
+                            <Button type='button' btnType='primary' handleClick={() => handlePageChange('/tasks')}>My Tasks</Button>
+                            <Button type='button' btnType='iconsSecondary' handleClick={handleLogout}>
+                                <span>Logout</span>
+                                <LogOut className='w-5 h-5'/>
+                            </Button>
+                        </div>
                     ) : (
                         <Button type='button' btnType='primary' handleClick={() => navigate('/login')}>
                             Get Started

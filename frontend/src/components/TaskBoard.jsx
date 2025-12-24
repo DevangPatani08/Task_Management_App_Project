@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { ctgTasks } from '../utils/taskUtils';
 import TaskColumn from './TaskColumn';
 
-const TaskBoard = ({ tasks, onEdit, onDelete, onToggleComplete }) => {
+const TaskBoard = ({ tasks, onEdit, toggling, onDelete, onToggleComplete }) => {
     const [currentTime, setCurrentTime] = useState(new Date());
 
     useEffect(() => {
@@ -18,13 +18,13 @@ const TaskBoard = ({ tasks, onEdit, onDelete, onToggleComplete }) => {
     return (
         <div className='w-full flex-1 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 p-4'>
             
-            <TaskColumn title='Right Now' tasks={ctg.doToday} type='do-today' onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
+            <TaskColumn toggling={toggling} title='Right Now' tasks={ctg.doToday} type='do-today' onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
             
-            <TaskColumn title='On Convenience' tasks={ctg.toDo} type='todo' onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
+            <TaskColumn toggling={toggling} title='On Convenience' tasks={ctg.toDo} type='todo' onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
             
-            <TaskColumn title='Complete Later' tasks={ctg.forLater} type='for-later' onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
+            <TaskColumn toggling={toggling} title='Complete Later' tasks={ctg.forLater} type='for-later' onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
             
-            <TaskColumn title='OverDue' tasks={ctg.overDue} type='overdue' onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
+            <TaskColumn toggling={toggling} title='OverDue' tasks={ctg.overDue} type='overdue' onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
         </div>
     );
 };

@@ -4,6 +4,7 @@ import { taskServices } from '../services/tasks.js';
 
 export const useTasks = () => {
     const [loading, setLoading] = useState(true);
+    const [toggling, setToggling] = useState({load: false, id: 0});
     const [error, setError] = useState(null);
     const [tasks, setTasks] = useState([]);
 
@@ -71,10 +72,10 @@ export const useTasks = () => {
     
     const toggleComplete = async (id) => {
         try {
-            setLoading(true);
+            setToggling({load: true, id: id});
             const toggle = await taskServices.toggleComplete(id);
             setTasks(prev => prev.map(task => task._id === id ? toggle : task));
-            setLoading(false);
+            setToggling({load: false, id: 0});
 
             if (toggle.completed) {
                 toast('Task Updated!...', { icon: '' });
@@ -94,5 +95,5 @@ export const useTasks = () => {
         };
     };
 
-    return ({ tasks, loading, error, createTask, updateTask, deleteTask, toggleComplete });
+    return ({ tasks, loading, error, toggling, createTask, updateTask, deleteTask, toggleComplete });
 };

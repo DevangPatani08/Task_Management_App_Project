@@ -3,7 +3,7 @@ import { sortTasks } from '../utils/taskUtils'
 import Typography from './Typography';
 import TaskCard from './TaskCard';
 
-const TaskColumn = ({ title, tasks, type, onEdit, onDelete, onToggleComplete }) => {
+const TaskColumn = ({ title, tasks, type, toggling, onEdit, onDelete, onToggleComplete }) => {
   const sortedTasks = sortTasks(tasks);
 
   const columnColor = () => {
@@ -38,7 +38,7 @@ const TaskColumn = ({ title, tasks, type, onEdit, onDelete, onToggleComplete }) 
           <Typography variant='p' weight='regular' className='w-full text-center text-neutral-700 rounded-md bg-neutral-200 px-8 py-2'>No task found...</Typography>
         ) : (
           sortedTasks.map(task => (
-            <TaskCard key={task._id} task={task} onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
+            <TaskCard key={task._id} task={task} toggling={toggling} onEdit={onEdit} onDelete={onDelete} onToggleComplete={onToggleComplete} />
           ))
         )}
       </div>

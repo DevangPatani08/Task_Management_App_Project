@@ -8,7 +8,7 @@ import TaskBoard from '../components/TaskBoard';
 import TaskForm from '../components/TaskForm';
 
 const Tasks = () => {
-    const { tasks, loading, error, createTask, updateTask, deleteTask, toggleComplete } = useTasks();
+    const { tasks, loading, error, toggling, createTask, updateTask, deleteTask, toggleComplete } = useTasks();
     const { user } = useAuth();
     const [showForm, setShowForm] = useState(false);
     const [edit, setEdit] = useState(null);
@@ -59,7 +59,7 @@ const Tasks = () => {
                     </div>
                     
                     {/* Task board */}
-                    <TaskBoard tasks={tasks} onDelete={deleteTask} onToggleComplete={toggleComplete} onEdit={handleEditClick} />
+                    <TaskBoard tasks={tasks} onDelete={deleteTask} toggling={toggling} onToggleComplete={toggleComplete} onEdit={handleEditClick} />
 
                     {/* TaskForm create mode */}
                     {showForm && <TaskForm isOpen={showForm} onClose={handleClose} mode='create' onSubmit={handleCreate} />}
